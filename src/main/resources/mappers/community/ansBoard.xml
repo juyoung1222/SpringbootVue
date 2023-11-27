@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.community.ans.dao.AnsDAO">
+	
+	<insert id="viewWrite" parameterType="com.care.bedu.community.ans.vo.AnsVO">
+		INSERT INTO T_BEDU_ANS(
+		  USER_NAME,
+		  CONTENT,
+		  QS_BD_NUM,
+		  ANS_LIKE_CNT,
+		  ANS_DATE,
+		  REG_DATE,
+		  REG_ID
+		)VALUES(
+		  #{userName},
+		  #{content},
+		  #{qsBdNum},
+		  #{ansLikeCnt},
+		  SYSDATE(),
+		  SYSDATE(),
+		  #{regId}
+		)
+	</insert>
+	
+	<select id="viewList" resultType="com.care.bedu.community.ans.vo.AnsVO">
+		SELECT
+		  ANS_BD_NUM as ansBdNum,
+		  CONTENT,
+		  ANS_DATE as ansDate,
+		  QS_BD_NUM AS qsBdNum,
+		  ANS_LIKE_CNT as ansLikeCnt,
+		  USER_NAME as userName
+		FROM T_BEDU_ANS 
+		WHERE QS_BD_NUM = #{qsBdNum} 
+		ORDER BY ANS_DATE ASC
+	</select>
+	
+	<select id="ansTotal" resultType="int">
+		SELECT
+		  COUNT(ANS_BD_NUM)
+		FROM T_BEDU_ANS
+	    WHERE QS_BD_NUM = #{qnanum}
+	</select>
+	
+	<delete id="ansDelete">
+		DELETE
+		 FROM T_BEDU_ANS
+		WHERE ANS_BD_NUM = #{ansBdNum}
+	</delete>
+	
+	<delete id="ansalladminDelete">
+		DELETE
+		 FROM T_BEDU_ANS
+		WHERE QS_BD_NUM = #{qsBdNum}
+	</delete>
+	
+	<delete id="ansreplyallDelete">
+		DELETE
+		 FROM T_BEDU_REPLY
+		WHERE ANS_NUM = #{ansBdNum}
+	</delete>
+	
+	<update id="ansedit">
+		UPDATE
+		 T_BEDU_ANS SET CONTENT = #{content}, REG_DATE = SYSDATE()
+		WHERE ANS_BD_NUM = #{ansBdNum}
+	</update>
+
+	
+</mapper>

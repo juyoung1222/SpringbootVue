@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.user.dao.MemberMypageDAO">
+
+	<select id="getLectureCount" resultType="int" parameterType="java.util.Map">
+		select 
+			COUNT(T.TITLE)
+		from
+			(SELECT 
+				A.TITLE ,
+				COUNT(C.LECT_DTL_NUM) as ARG1,
+				SUM(D.complete) as ARG2
+			FROM b_edu.t_bedu_lect A
+			INNER JOIN b_edu.t_bedu_user_lect B
+				ON A.LECT_NUM = B.LECT_NUM
+			LEFT join b_edu.t_bedu_lect_dtl C
+				on A.LECT_NUM = C.LECT_NUM
+			left join
+				b_edu.t_bedu_history D
+			on C.LECT_DTL_NUM  = D.lect_dtl_num 
+			where
+				B.USER_NAME = #{userName}
+				and
+				(
+					A.TITLE like concat('%',#{keyword},'%') or
+					A.TEACHER like	CONCAT('%',#{keyword},'%')
+				)
+			group by A.LECT_NUM
+			having
+			<choose>
+				<when test="group.equals('learning')">
+					ARG1 != ARG2
+				</when>
+				<when test="group.equals('done')">
+					ARG1 = ARG2
+				</when>
+				<otherwise>
+					1=1
+				</otherwise>
+			</choose>
+			) T
+   	</select>
+	
+	<select id="lectureListInfoFirst" resultType="com.care.bedu.lecture.vo.LectureVO" parameterType="com.care.bedu.user.vo.MemberMypageVO">
+		select 
+			B.TITLE as title,
+			B.TEACHER as teacher,
+			B.THUMBNAIL as thumbnail,
+			B.LECT_NUM as lectNum,
+			B.LECT_SUMMARY as lectSum,
+			B.LECT_PERIOD as lectPeriod
+		from 
+			b_edu.t_bedu_user_lect A
+		inner join
+			b_edu.t_bedu_lect B
+		on 
+			A.LECT_NUM = B.LECT_NUM 
+		inner join 
+			b_edu.t_bedu_user C
+		on
+			A.USER_NAME = C.USER_NAME 
+		where C.USER_NAME = #{userName}
+		group by A.USER_LECT_NUM
+		order by A.LECT_REG_DATE DESC, B.LECT_NUM DESC limit 0,3
+	</select>
+	
+	<select id="getMemberMypageAll"  resultType="com.care.bedu.lecture.vo.LectureVO" parameterType="java.util.Map">
+		SELECT 
+			A.LECT_NUM as lectNum,
+			A.TITLE as title,
+			A.TEACHER as teacher,
+			A.LECT_PERIOD as lectPeriod,
+			A.LECT_SUMMARY as lectSum,
+			A.THUMBNAIL as thumbnail,
+			SUM(C.LECT_DTL_TIME) as TOTALTIME,
+			SUM(D.history_end_time) as PROGRESS,
+			COUNT(C.LECT_DTL_NUM) TOTAL_COUNT,
+			SUM(D.complete) TOTAL_COMP
+		FROM 
+			b_edu.t_bedu_lect A
+    	INNER JOIN 
+			b_edu.t_bedu_user_lect B
+		ON 
+			A.LECT_NUM = B.LECT_NUM
+		LEFT JOIN 
+			b_edu.t_bedu_lect_dtl C
+		ON 
+			A.LECT_NUM = C.LECT_NUM
+		LEFT JOIN 
+			(
+			SELECT 
+				*
+			FROM
+				B_EDU.t_bedu_history
+			ORDER BY 
+				history_record_day DESC	
+		) D
+		ON 
+			C.LECT_DTL_NUM  = D.lect_dtl_num 
+   		WHERE 
+			B.USER_NAME = #{userName}
+		AND
+			(
+			A.TITLE LIKE CONCAT('%',#{keyword},'%')
+			or
+			A.TEACHER LIKE CONCAT('%',#{keyword},'%')
+			)
+		GROUP BY 
+			A.LECT_NUM
+		HAVING
+		<choose>
+			<when test="group.equals('learning')">
+				TOTAL_COUNT != TOTAL_COMP
+			</when>
+			<when test="group.equals('done')">
+				TOTAL_COUNT = TOTAL_COMP
+			</when>
+			<otherwise>
+				100 = 100
+			</otherwise>
+		</choose>
+   		ORDER BY 
+		<choose>
+			<when test="order.equals('recentlyPay')">
+				B.LECT_REG_DATE DESC, A.LECT_NUM DESC
+			</when>
+			<when test="order.equals('title')">
+				A.TITLE DESC
+			</when>
+			<otherwise>
+				D.history_record_day DESC 
+			</otherwise>
+		</choose>
+		LIMIT 
+			#{startNo},9
+   	</select>
+
+	<select id="getRecentlyViewd" resultType="java.util.HashMap">
+		call BEDU_RECENT_VIEW_LECT_PRO(#{userName})
+	</select>
+	
+</mapper>

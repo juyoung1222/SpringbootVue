@@ -1,0 +1,613 @@
+/*작성자:황용학*/
+
+
+#cscMain {
+  padding-top: 5.5%;
+  margin-left: 3%;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  width: 80%;
+}
+
+.csc-main-side {
+  width: 110%;
+}
+
+#cscside-view {
+  text-align: right;
+}
+
+#cscside-view,
+#csc-view-freepath {
+  cursor: pointer;
+  text-align: right;
+}
+
+#csc-detail-main {
+  padding-top: 5.5%;
+  margin-left: 3%;
+  padding-right: 5%;
+  padding-bottom: 50px;
+  width: 80%;
+}
+
+#cscboard-table {
+  width: 100%;
+  padding: 30%;
+  margin-top: 6%;
+  margin-bottom: 5%;
+}
+
+#faqboard-table {
+  width: 100%;
+  padding: 30%;
+  margin-top: 6%;
+  margin-bottom: 5%;
+}
+
+#csc-view-side {
+  padding-top: 3%;
+  margin-left: 4%;
+  float: left;
+}
+
+#cscboard-table th{
+  text-align: center;
+  padding: 1%;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+#faqboard-table th {
+  text-align: center;
+  padding: 1%;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+
+#cscboard-table td {
+  text-align: center;
+  padding: 1%;
+  margin-left: 45%;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+
+#faqboard-table td {
+  padding: 2.5%;
+  margin-left: 5%;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+#freeboard-reviews {
+  margin-bottom: 15px;
+}
+
+#freeboard-reviews-select {
+  border: none;
+}
+
+.cscviewkeyword {
+  width: 300px;
+  height: 40px;
+  border-radius: 20px;
+  margin-right: 3%;
+  border: 2px solid black;
+  text-indent: 18%;
+}
+
+.searchForm {
+  margin-left: -3%;
+}
+
+#csc-search-btn {
+  margin-left: 15px;
+}
+
+#csc-write {
+  padding-top: 5.5%;
+  margin-left: 3%;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  width: 80%;
+}
+
+#csc-writepath-btn1 {
+  margin-bottom: 1%;
+  background-color: var(--blue) !important
+}
+
+#cscBoradSearch {
+  float: right;
+  display: flex;
+  justify-content: space-between;
+}
+
+.h3 {
+  font: bold;
+}
+
+#csc-detail-btns {
+  float: right;
+}
+
+#csc-detail-body {
+  width: 90%;
+}
+
+.date {
+
+  margin-left: 80%;
+}
+
+.name {
+  font-weight: bold;
+}
+
+#cscboard-detail-replywrite {
+  display: none;
+  word-wrap: break-word;
+  width: 50%;
+  margin-bottom: 50px;
+}
+
+.cscReplyContent {
+  word-wrap: break-word;
+}
+
+
+#csc-detail-replycontent {
+  width: 200%;
+  height: 100px;
+  resize: none;
+}
+
+.csc-detail-replylist {
+  padding-left: 8%;
+  padding-right: 8%;
+  border: 1px solid;
+  margin-top: 30px;
+  border-radius: 20px 20px / 20px 20px;
+}
+
+#csc-detail-btncontent {
+  margin-top: 60px;
+  display: flex;
+}
+
+#csc-userinfo {
+  font-size: 1rem;
+  display: flex;
+}
+
+#csc-comm {
+  margin-left: 20px;
+}
+
+.csc-answer {
+  float: left;
+  display: flex;
+  align-items: middle;
+}
+
+#csc-sort {
+  margin-top: 19px;
+}
+
+#cscboard-table-tds a {
+  width: 120px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+#faqboard-table-tds a {
+  width: 120px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.selectBox {
+  margin-top: 2%;
+}
+
+#cscSortOption {
+  width: 110px;
+  height: 40px;
+  font-size: 120%;
+  border: none;
+  float: right;
+}
+
+.text-start {
+  font: bold;
+}
+
+#cscTitle {
+  width: 30%;
+}
+
+
+#csc-date {
+  margin-left: 20px;
+}
+
+#csc-likebtn {
+  float: right;
+  border: 0.1rem solid #dde0ea;
+  width: 100px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 12rem;
+  z-index: 2;
+
+}
+
+#csc-detail-contents {
+  margin-bottom: 15px;
+}
+
+/*cscDetail*/
+#csc-write-content {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 200px;
+  resize: none;
+}
+
+
+/*cscBoardEdit*/
+#csc-edit-content {
+  width: 100%;
+  height: 200px;
+  resize: none;
+}
+
+#comm-main-side {
+  float: left;
+  padding-top: 5%;
+  padding-left: 6%;
+}
+
+.comm-main-cate {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+#csc-detail-contents {
+  word-wrap: break-word;
+}
+
+.hr {
+  margin-bottom: 50px;
+
+}
+
+
+#cscboard-detail-rewrite {
+  background-color: var(--blue) !important
+}
+
+#cscboard-detail-replybtn {
+  background-color: var(--blue) !important
+}
+
+#csc-search-icon {
+  position: relative;
+  z-index: 2;
+  margin-right: -8%;
+}
+
+.csc-writebtn {
+  background-color: var(--blue) !important;
+  margin-right: 10px;
+}
+
+#buttonSet {
+  float: right;
+  margin: 10px;
+}
+
+.writeMain {
+  float: left;
+  padding-top: 5%;
+  padding-left: 6%;
+}
+
+@media (max-width: 1400px) {
+  .cscView {
+    float: left;
+    padding-top: 5%;
+    padding-left: 6%;
+  }
+}
+
+.cscView {
+  float: left;
+  padding-top: 5%;
+  padding-left: 6%;
+}
+
+#reply-commit {
+  margin-top: 0.5%;
+  margin-right: 0.6%;
+  background-color: #303076;
+}
+
+#reply-cancel {
+  margin-top: 0.5%;
+}
+
+#replyCnt {
+  margin-top: 93%;
+}
+
+.ck-content {
+  height: 500px !important;
+}
+
+.cscDetail {
+  float: left;
+  padding-top: 5%;
+  padding-left: 6%;
+}
+
+#inquiry-detail-rewrite {
+  margin-right: 0.8%;
+  background-color: #303076;
+  margin-top: 0.000001%;
+}
+
+#textarea-row {
+  width: 90.3%;
+  margin-top: 1%;
+  margin-right: 12%;
+}
+
+#answer {
+  color: #01040a;
+  margin-top: 30%
+}
+
+#searched {
+  margin-left: 32%;
+  margin-bottom: 5%;
+  font-size: 110%;
+}
+
+.pagination {
+  font-size: 110%;
+  margin-bottom: 5%;
+  --bs-pagination-font-size: 110%;
+  --bs-pagination-color: #212529;
+  --bs-pagination-focus-box-shadow: 0 0 0 41% rgba(50, 62, 82, 0.25);
+  --bs-pagination-active-bg: #112b45;
+  --bs-pagination-active-border-color: #01040a;
+  --bs-pagination-disabled-color: #6c757d;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+
+@media (max-width: 767px) {
+  .pagination-container1 {
+    display: none;
+    align-items: left;
+    font-size: 14px; /* Adjust as needed */
+    margin: 10px ; /* Adjust as needed */
+  }
+}
+
+@media (min-width: 768px) {
+  .pagination-container2 {
+    display: none;
+    width: 0%;
+    font-size: 14px; /* Adjust as needed */
+    margin: 10px ; /* Adjust as needed */
+  }
+}
+
+.pagination-container1 {
+  margin-left: 43%;
+}
+
+.inq-reply {
+  margin-top: 2%;
+
+}
+
+#inq-reply-name {
+  margin-left: 1%;
+}
+
+#inq-reply-date {
+  margin-left: 7%;
+}
+
+#inq-reply-content {
+  background-color: white;
+  overflow-wrap: break-word;
+}
+
+#inq-reply-content2 {
+  margin-right: 9%;
+}
+
+#inq-reply-del {
+  border: 0;
+  font-weight: bolder;
+  color: #303076;
+  background-color: transparent;
+  margin-left: 84.5%;
+  margin-bottom: 1%;
+}
+
+.horizontal-line {
+  width: 90%;
+  height: 0.08px;
+  background-color: rgb(187, 177, 177);
+}
+
+@media (max-width: 767px) {
+  .button-container1 {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .button2 {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .button2 {
+    display: block;
+    height: 5%;
+  }
+}
+
+#csc-writepath-btn2 {
+  font-size: 150%;
+  /* 버튼 내용 폰트 크기 */
+  padding: 2%;
+  /* 버튼 내용 패딩 */
+  border-radius: 10px;
+  /* 버튼 테두리 둥글게 */
+  margin-left: -35%;
+  margin-top: 5%;
+  position: fixed !important;
+  bottom: 5%;
+  right: 25%;
+  width: 50%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+}
+
+#paginationing {
+  width: 100%;
+  height: 50%;
+}
+
+.custom-pagination {
+  /* 원하는 스타일 속성 설정 */
+  font-size: 100%;
+  padding: 5%;
+}
+
+#Cschead {
+  font-size: 2.9rem;
+  font-weight: bold;
+  padding-top: 7%;
+  margin-left: 8%;
+}
+
+.customer-center {
+  display: flex;
+  height: 100vh;
+}
+
+#cscdetail {
+  font-size: 20px;
+  margin-top: 0.5%;
+  margin-left: 18%;
+}
+
+#cscmo {
+  margin-left: 62%;
+  margin-bottom: 0.7%;
+  font-size: 19px;
+}
+
+.custom-nav-item .custom-nav-text {
+  color: rgb(105, 99, 99);
+  margin-top: 115%;
+  margin-left: 0%;
+}
+
+.custom-nav-text:hover {
+  color: rgb(15, 10, 1);
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.cscbox {
+  width: 65.4%;
+  height: 14%;
+  background-color: #f4f4ea;
+  transition: height 0.2s ease;
+  cursor: pointer;
+  margin-top: 1%;
+  margin-bottom: 0.7%;
+  margin-left: 8%;
+  border-radius: 10px;
+}
+
+#cscmy-nav {
+  font-size: 160%;
+  margin-left: 28%;
+  margin-bottom: 3%;
+}
+
+#csccount {
+  color: rgb(10, 0, 203);
+  font-size: 21px;
+}
+
+.cscbox.expanded {
+  height: auto;
+}
+
+.csc-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 7%;
+}
+
+.cscquestion {
+  padding: 1%;
+  margin-left: 0%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 21px;
+}
+
+.cscanswer {
+  padding: 1%;
+  font-size: 18px;
+  margin-left: 0%;
+  margin-bottom: 1%;
+  display: inline-block;
+}
+
+.cscdivider {
+  height: 1%;
+  background-color: #d1c4c4;
+  margin: 1%;
+}
+
+@media (max-width: 767px) {
+  .box {
+    width: 100px;
+    height: 50px;
+  }
+}
+
+.faq-answer {
+  padding: 1%;
+  font-size: 18px;
+  margin-left: 0%;
+  margin-bottom: 1%;
+  display: inline-block;
+}

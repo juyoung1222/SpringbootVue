@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.review.dao.ReviewDAO">
+
+    <select id="getReviewById" resultType="com.care.bedu.review.vo.ReviewVO">
+        SELECT * FROM T_BEDU_RW_BD WHERE RW_NUM = #{id}
+    </select>
+
+    <insert id="createReview" parameterType="com.care.bedu.review.vo.ReviewVO">
+	INSERT INTO t_bedu_rw_bd (
+            USER_NAME,
+            CONTENT,
+            RW_GRADE,
+            LECT_NUM,
+            RW_DATE
+            ) VALUES (
+            #{userName},
+            #{content},
+            #{rwGrade},
+            #{lectNum},
+            NOW()
+            )
+    </insert>
+
+
+    <select id="getAllReviews" resultType="java.util.HashMap">
+        SELECT
+            RW.CONTENT    as content
+            , RW.USER_NAME  as userName
+            , RW.RW_GRADE   as rwGrade
+            , RW.RW_DATE    as rwDate
+            , FILD.LECT_TOP_CATE        as lectTopCate
+            , FILD.LECT_TOP_CATE_KOR    as lectTopCateKor 
+            , FILD.LECT_MID_CATE        as lectMidCate
+            , FILD.LECT_MID_CATE_KOR    as lectMidCateKor 
+            , FILD.LECT_BOT_CATE        as lectBOtCate
+            , FILD.LECT_BOT_CATE_KOR    as lectBotCateKor
+            , LECT.CATE_KOR             as cateKor
+        FROM t_bedu_rw_bd RW
+            LEFT JOIN t_bedu_lect LECT 
+                ON RW.LECT_NUM = LECT.LECT_NUM
+            LEFT JOIN t_bedu_lect_fild FILD 
+                ON LECT.CATE_CODE = FILD.LECT_BOT_CATE
+    </select>
+    
+    <select id="getSearchedReviews" resultType="java.util.HashMap">
+        SELECT
+            RW.CONTENT                as content
+            , RW.USER_NAME              as userName
+            , RW.RW_GRADE               as rwGrade
+            , RW.RW_DATE                as rwDate
+            , RW.LECT_NUM               as lectNum
+            , FILD.LECT_TOP_CATE        as lectTopCate
+            , FILD.LECT_TOP_CATE_KOR    as lectTopCateKor
+            , FILD.LECT_MID_CATE        as lectMidCate
+            , FILD.LECT_MID_CATE_KOR    as lectMidCateKor
+            , FILD.LECT_BOT_CATE        as lectBOtCate
+            , FILD.LECT_BOT_CATE_KOR    as lectBotCateKor
+            , LECT.CATE_KOR             as cateKor
+        FROM t_bedu_rw_bd RW
+            LEFT JOIN t_bedu_lect LECT 
+                ON RW.LECT_NUM = LECT.LECT_NUM
+            LEFT JOIN t_bedu_lect_fild FILD 
+                ON LECT.CATE_CODE = FILD.LECT_BOT_CATE
+        WHERE
+            RW.CONTENT like CONCAT('%',#{keyword},'%')
+            <if test="topCate != 'all'"> 
+            AND FILD.LECT_TOP_CATE = #{topCate} 
+            </if>
+    </select>
+
+</mapper>

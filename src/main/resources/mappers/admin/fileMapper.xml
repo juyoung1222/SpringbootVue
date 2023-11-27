@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.admin.fileManage.dao.FileManageDao">
+
+    <insert id="upload" parameterType="com.care.bedu.admin.fileManage.vo.FileManageVO">
+        CALL b_edu.BEDU_LECT_DTL_PRO(
+            #{lectDtlTime},
+            #{lectDtlTitle},
+            #{lectNum},
+            #{regId},
+            #{lectVideoUrl},
+            #{lectDtlIndex}    
+        )
+    </insert>
+
+    <select id="getTotalLecture" resultType="com.care.bedu.lecture.vo.LectureVO">
+        SELECT
+            A.LECT_NUM as lectNUm, 
+            A.TITLE,
+            A.TEACHER,
+            A.LECT_SUMMARY,
+            A.CATE_CODE,
+            A.CATE_KOR,
+            A.PRICE,
+            A.LECT_PERIOD,
+            COUNT(B.LECT_NUM) AS TOTAL
+        FROM
+            b_edu.T_BEDU_LECT A
+        LEFT JOIN b_edu.T_BEDU_LECT_DTL B
+        ON A.LECT_NUM = B.LECT_NUM
+        GROUP BY A.LECT_NUM
+    </select>
+
+    <delete id="deleteFile">
+        DELETE FROM b_edu.T_BEDU_LECT_DTL WHERE LECT_DTL_NUM = #{num} 
+    </delete>
+
+
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.community.freeBoard.dao.FreeLikeCntDAO">
+	
+	<select id="getfreelikeName" resultType="int">
+		SELECT
+		  COUNT(LIKE_NUM) 
+		FROM T_BEDU_LIKE_CNT
+		WHERE COMM_BD_NUM = #{commnum} AND USER_NAME=#{userid} AND LIKE_YN=#{likeyn}
+	</select>
+	
+	<select id="freeEqcnt" resultType="int">
+		SELECT
+		  COUNT(LIKE_NUM) 
+		FROM T_BEDU_LIKE_CNT
+		WHERE COMM_BD_NUM = #{commnum} AND USER_NAME=#{username}
+	</select>
+	
+	<delete id="freelikedel">
+		DELETE
+		 FROM T_BEDU_LIKE_CNT
+		WHERE LIKE_NUM = #{likenum} AND COMM_BD_NUM = #{commnum}
+	</delete>
+	
+	<select id="getlikeFreenum" resultType="int">
+		SELECT
+		 LIKE_NUM 
+		FROM T_BEDU_LIKE_CNT
+		WHERE COMM_BD_NUM = #{commNum} AND USER_NAME = #{userName} AND LIKE_YN = #{likeyns}
+	</select>
+	
+	<insert id="cntFreeSave">
+		INSERT INTO T_BEDU_LIKE_CNT(
+		  USER_NAME,
+		  COMM_BD_NUM,
+		  REG_DATE, 
+		  REG_ID
+		)VALUES(
+		  #{userName},
+		  #{commBdNum},
+		  SYSDATE(),
+		  #{regId}
+		)
+	</insert>
+	
+	<insert id="likeCntFreeSave">
+		INSERT INTO T_BEDU_LIKE_CNT(
+		  USER_NAME,
+		  COMM_BD_NUM,
+		  REG_DATE, 
+		  REG_ID,
+		  LIKE_YN
+		)VALUES(
+		  #{userName},
+		  #{commBdNum},
+		  SYSDATE(),
+		  #{regId},
+		  #{likeyn}
+		)
+	</insert>
+	
+	
+</mapper>

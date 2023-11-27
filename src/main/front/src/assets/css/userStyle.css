@@ -1,0 +1,605 @@
+/* 작성자 이준원 */
+
+
+/* LoginView css */
+/* SweatAlert폰트 사이즈 CSS */
+#swal2-title{
+    padding-top: 8%;
+    font-size: 1.3rem !important;
+}
+
+#swal2-title span{
+    padding-top: 8%;
+    font-size: 1.3rem !important;
+}
+
+#loginChangeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 9%;
+    padding-bottom: 8%;
+}
+
+#passwordInputContatiner {
+    position: relative;
+}
+
+#passwordEyeToggle {
+    position: absolute;
+    top:35.5%;
+    right: 14%;
+}
+
+#loginChangeSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-top: 7%;
+}
+
+#loLoginChangeBtn {
+    width: 40%;
+    padding: 2.2%;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    background: #303076;
+    border-bottom: 3px solid #303076;
+    animation: loginFadein 0.5s;
+}
+
+@keyframes loginFadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#loRegistChangeBtn {
+    width: 40%;
+    padding: 2.2%;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    color: black;
+    background: white;
+    border-bottom: 3px solid #303076;
+}
+
+#loginContainer {
+    position: relative;
+    background: white;
+    width: 62.5%;
+    margin-bottom: 5%;
+}
+
+#loginLogoContainer {
+    position: relative;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    background: white;
+    margin-top: 6.25%;
+}
+
+#loginLogo {
+    width: 30%;
+}
+
+#emailInputSection,
+#pwdInputSection {
+    position: relative;
+    width: 62%;
+    padding: 1.4%;
+    margin-top: 2%;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+#idRememberSection {
+    position: absolute;
+    margin-top: 2%;
+    left: 19%;
+    font-size: 1.1rem;
+}
+
+#loginSubmitBtn {
+    position: relative;
+    width: 62%;
+    padding: 1.3%;
+    margin-top: 8.75%;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #ffffff;
+    background: #303076;
+}
+
+/* RegistView css */
+
+#emailOptions {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 8.8%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 999;
+    width: 78.5%;
+}
+
+#emailOptions li {
+    padding: 1.5625%;
+    cursor: pointer;
+}
+
+#emailOptions li:hover {
+    background-color: #f1f1f1;
+}
+
+#registChangeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+    padding-top: 5%;
+}
+
+#registChangeSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-top: 7%;
+}
+
+#agreeCloseBtn {
+    position: absolute;
+    top: -5px; 
+    right: -5px; 
+    z-index: 2; 
+    cursor: pointer;
+}
+
+#reLoginChangeBtn {
+    width: 40%;
+    padding: 2.2%;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    color: black;
+    background: white;
+    border-bottom: 3px solid #303076;
+}
+
+@keyframes registFadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#reRegistChangeBtn {
+    width: 40%;
+    padding: 2.2%;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: #303076;
+    animation: registFadein 0.5s;
+    border-bottom: 3px solid #303076;
+}
+
+#registContainer {
+    position: relative;
+    background: white;
+    width: 50%;
+    height: auto;
+    margin-bottom: 5%;
+}
+
+#registCheckBox {
+    align-items: center;
+    margin-left: 10%;
+    margin-top: 6.25%;
+}
+
+#registChkAll {
+    display: flex;
+    cursor: pointer;
+    width: 87%;
+    margin-left: 1%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 2%;
+    background-color: #f3f3f3;
+    align-items: center;
+}
+
+#agreeFaIcon{
+    float: right;
+}
+
+#registContainer #registChoice {
+    margin-top: 2%;
+    margin-left: 3%;
+    width: 84%;
+}
+
+#registCheckBox a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#registContainer label input {
+    margin-right: 1.5625%;
+}
+
+#registContainer label span {
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+#registCheckBox textarea {
+    margin-top: 3.125%;
+    width: 95%;
+    font-size: 1em;
+    resize: none;
+    align-self: flex-start;
+}
+
+#registCheckBox input[type="checkbox"] {
+    padding: 1.5625%;
+}
+
+#registSubmit,
+#registSubmit2 {
+    width: 89.3%;
+    padding: 1.9%;
+    margin-top: 5.75%;
+    margin-left: -11.0375%;
+    font-size: 1.3rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    color: #303076;
+    border: 3px solid #303076;
+}
+
+#registSubmit2:active {
+    box-shadow: inset 1px 2px 5px 0px rgb(203, 203, 203),
+        inset -1px 0px 3px 0px rgb(203, 203, 203);
+}
+
+#registFormGroup {
+    margin-left: 2%;
+    margin-bottom: 4%;
+}
+
+#registFormGroupPassword {
+    margin-left: 2%;
+}
+
+#registEmail {
+    width: 58.5%;
+    padding: 2.2%;
+    margin-top: 8.75%;
+    margin-left: 9%;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+#registEmailChk {
+    width: 25%;
+    padding: 2.2%;
+    margin-left: -3.4375%;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: white;
+    background-color: #707070;
+}
+
+#registInputError {
+    margin-left: 9%;
+    position: absolute;
+    color: red;
+}
+
+#registInputErrorPassword {
+    margin-left: 11%;
+    position: absolute;
+    color: red;
+}
+
+#registInputCorrect {
+    margin-left: 9%;
+    position: absolute;
+    color: rgb(0, 182, 0);
+}
+
+#registNickname {
+    width: 58.5%;
+    padding: 2.2%;
+    margin-left: 9%;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+#registNickChk {
+    width: 25%;
+    padding: 2.2%;
+    margin-left: -3.4375%;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: white;
+    background-color: #707070;
+}
+
+#registPassword {
+    width: 80%;
+    padding: 2.2%;
+    margin-left: 9%;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+#registConfirmPassword {
+    width: 80%;
+    padding: 2.2%;
+    margin-left: 9%;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-top: 4%;
+}
+
+#registSubmitFormBtn {
+    width: 80%;
+    padding: 2.2%;
+    margin-top: 5%;
+    margin-left: 9.2%;
+    font-size: 1.3rem;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    color: #303076;
+    border: 3px solid #303076;
+}
+
+/* 모달 창 CSS */
+.modal {
+    display: block; /* 모달 창 표시 */
+    position: fixed; /* 위치 고정 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 120%;
+    background-color: rgba(0, 0, 0, 0.4); /* 배경 어둡게 */
+  }
+  
+  #agreeItem {
+    padding: 2%;
+    margin-top: 2%;
+    overflow: auto;
+    text-align: left;
+    background-color: #f5f4f4;
+  }
+
+  #agreeItem h4 {
+    font-size: 1.2rem;
+  }
+  
+  .agreeOpen span {
+    color: #888;
+    font-weight: bold;
+    padding-bottom: 2%;
+  }
+  
+  .agreeOpen {
+    border-bottom: 1px solid #cfcfcf;    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .agreeOpen > span {
+    cursor: pointer;
+  }
+  
+  /* 모달 내용 */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 2%;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    max-height: 50%;
+    display: flex;
+  }
+
+/* 닫기버튼 */
+
+.agreeClose {
+    display: flex;
+    justify-content: center;
+}
+
+/* 닫기버튼 */
+#agreeCloseBtn:hover,
+#agreeCloseBtn:focus {
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 1300px) {
+
+    #registFormGroup {
+        position: relative;
+        margin-left: 2%;
+        margin-bottom: 4%;
+    }
+
+    #registFormGroupPassword {
+        position: relative;
+        margin-left: 2%;
+        margin-bottom: 0;
+    }
+
+    /* 로그인 모바일 CSS */
+    #loginChangeContainer {
+        padding-top: 10%;
+        padding-bottom: 20%;
+    }
+
+    #loginChangeSection {
+        margin-top: 10%;
+    }
+
+    #loginSubmitBtn {
+        font-size: 0.9rem;
+        margin-top: 18%;
+        width: 100%;
+        margin-bottom: -500px;
+    }
+
+    #emailInputSection ,
+    #pwdInputSection {
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    #passwordInputContatiner {
+        position: relative;
+    }
+    
+    #passwordEyeToggle {
+        position: absolute;
+        right: 5%;
+    }
+
+    #loginChangeSection {
+        width: 105%;
+    }
+
+    #loginContainer {
+        width: 90%;
+    }
+
+    #idRememberSection {
+        position: absolute;
+        font-size: 0.9rem;
+        margin-top: 5%;
+        left: 0;
+    }
+
+    /* 회원가입 모바일 CSS*/
+    #registInputCorrect,
+    #registInputError {
+        position: relative;
+        margin-top: 0;
+        margin-left: 0;
+        margin-bottom: 0;
+        font-size: 0.9rem;
+    }
+
+    #registInputErrorPassword {
+        position: relative;
+        margin-left: 2%;
+        margin-bottom: 0;
+        font-size: 0.9rem;
+    }
+
+    #registChkAll,
+    #registCheckBox {
+        margin-left: 1%;
+        width: 99%;
+        font-size: 0.9rem;
+    }
+    
+    #registChangeSection {
+        margin-top: 20%;
+        width: 105%;
+    }
+  
+    #registContainer {
+        width: 90%;
+    }
+
+    #registContainer #registChoice {
+        width: 96%;
+    }
+  
+    #registContainer #registChoice span{
+        font-size: 0.9rem;
+    }
+
+    #emailOptions {
+        width: 98%;
+        margin: 0;
+    }
+
+    #registEmailChk {
+        margin-left: 0;
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    #registSubmitFormBtn {
+        font-size: 0.9rem;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 10%;
+    }
+
+    #registContainer label span {
+        font-size: 0.9rem;
+    }
+
+    #registConfirmPassword {
+        font-size: 0.9rem;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 4%;
+    }
+
+    #registEmail,
+    #registNickname,
+    #registPassword {
+        font-size: 0.9rem;
+        width: 100%;
+        margin-left: 0;
+    }
+  
+    #registSubmit,
+    #registSubmit2 {
+        width: 100%;
+        margin-left: 0;
+    }
+  
+    #registCheckBox textarea {
+        width: 100%;
+    }
+
+    #registNickChk {
+        margin-left: 0;
+        width: 100%;
+        font-size: 0.9rem;
+    }
+}

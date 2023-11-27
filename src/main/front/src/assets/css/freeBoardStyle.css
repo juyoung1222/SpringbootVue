@@ -1,0 +1,412 @@
+/*StudyReview css*/
+
+/* 자유게시판의 좋아요버튼 background색을 지정해줌 */
+.freeBackColor {
+    background-color: #f8f7ff;
+}
+
+/* 자유게시판의 좋아요버튼의 하트 색을 지정해줌 */
+.fontBackColor {
+    color: #dd2c2c;
+}
+
+/* 자유게시판의 좋아요버튼 background색을 지정해줌 */
+.freeDefault {
+    background-color: white;
+}
+/* FreeBoardView의 Content부분 추후 수정해야함 */
+#CommContentDemo {
+    text-decoration: none;
+    color: #838383;
+    width: 100%;
+    margin-top: 1%;
+    overflow: hidden;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: normal;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 1%;
+}
+
+
+#CommContentDemo:hover {
+    color: #6868ff;
+    cursor: pointer;
+}
+
+#commCnt {
+    float: right;
+    margin-left: 1%;
+}
+
+#commReply {
+    float: right;
+    margin-left: 1%;
+}
+
+#commHeart {
+    float: right;
+}
+
+#commDateTime {
+    margin-left: 1%;
+    display: inline-block;
+}
+
+#freeCommContainer {
+    padding-bottom: 2%;
+    padding-right: 2%;
+    border-top: 1px solid #ccc;
+}
+
+.freeboardMain {
+    display: grid;
+    padding-top: 5.5%;
+    margin-left: 3%;
+    margin-right: 2%;
+    padding-bottom: 50px;
+}
+
+#freeboard-table {
+    padding-left: 2%;
+    margin-bottom:100px;
+}
+
+#free-view-side {
+    padding-top: 3%;
+    margin-left: 4%;
+    float: left;
+}
+
+#free-reply-delb {
+    border: 0;
+    font-weight: bolder;
+    color: #303076;
+    background-color: transparent;
+}
+.freeSelectBox {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1%;
+}
+.freeQnaSortOption {
+    margin-top: 1%;
+    width: 110px;
+    height: 40px;
+    font-size: 120%;
+    border: none;
+}
+
+#freeboard-reviews {
+    margin-bottom: 15px;
+}
+
+#freeboard-reviews-select {
+    border: none;
+}
+
+.freeViewKeyword {
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+#free-view-keywordbtn {
+    margin-left: 2%;
+    width: 30%;
+}
+
+#free-keywordbtn {
+    background-color: var(--blue) !important;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+/*FreeBoardDetail css*/
+
+#freeeditcontent{
+    display: none;
+}
+
+#freeboard-title {
+    border: 1px solid #ccc;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#freeBoardTitle {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1%;
+}
+
+#freeboard-userinfo {
+    font-size: 1rem;
+    display: flex;
+    align-items: flex-end;
+}
+
+.freereplyeditall-btns{
+    display: none;
+    width: 90%;
+}
+
+#freeReplydelbtn{
+    margin-bottom: 1rem !important;
+    float: right;
+}
+
+#free-comm {
+    margin-left: 20px;
+}
+
+#free-date {
+    margin-left: 20px;
+}
+
+#freeContent {
+    margin-bottom: 8%;
+}
+
+#free-likebtn {
+    border: 0.1rem solid #dde0ea;
+    border-radius: 12rem;
+    z-index: 2;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+}
+
+#free-likeyn {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2%;
+}
+
+#free-detail-replylist{
+    /* border:1px solid; */
+    margin-top:30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3%;
+    /* border-radius: 20px 20px / 20px 20px; */
+}
+
+
+#qna-detail-rewrite {
+    display: none;
+}
+
+#qna-detail-recensell {
+    display: none;
+}
+
+#freeLikeReply {
+    padding-top: 2%;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*freeBoardWrite*/
+#freeboard-write {
+    display: flow-root;
+    padding-top: 5.5%;
+    margin-left: 3%;
+    padding-bottom: 50px;
+    margin-right: 3%;
+}
+
+#freeboard-detail-contatiner {
+    display: grid;
+    padding-top: 5.5%;
+    margin-left: 3%;
+    padding-bottom: 50px;
+    margin-right: 3%;
+}
+
+#comm-main-side {
+    float: left;
+    padding-top: 5%;
+    padding-left: 4%;
+}
+
+.comm-main-cate{
+    list-style-type: none;
+    padding: 0;
+}
+
+/*freeBoardEdit*/
+#freeboard-edit-title {
+    margin-bottom: 1%;
+}
+
+#freeboard-detail-contents {
+    margin-top: 2%;
+    word-wrap: break-word;
+}
+
+#freeboard-edit-btncontain {
+    margin-top: 2%;
+    float: right;
+}
+
+#freeboard-detail-main {
+    padding-top: 5%;
+}
+
+#qna-detail-rewrite {
+    background-color: var(--blue) !important
+}
+
+#free-detail-replybtn {
+    background-color: var(--blue) !important
+}
+
+.freeReplyName {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.freeReplyDate {
+    margin-left: 50px;
+}
+
+.freeReplycontent {
+    word-wrap: break-word;
+}
+
+/* #free-search-icon {
+    position: absolute;
+} */
+
+#free-detail-replywrite{
+    display: none;
+    word-wrap: break-word;
+    margin-bottom: 2%;
+}
+
+.replyeditcontent {
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+
+#qna-detail-replycontent {
+    width: 100%; 
+    height: 100px;
+    resize: none;
+}
+
+#freeboard-write-reset {
+    float: right;
+}
+
+#freeboard-write-submit {
+    float: right;
+    background-color: var(--blue) !important;
+    margin-right: 5px;
+}
+
+#freeboard-view{
+    float: left;
+    padding-top: 5%;
+    padding-left: 6%;
+}
+
+
+.writeMain{
+    float: left;
+    padding-top: 5%;
+    padding-left: 6%;
+}
+
+.freeTitle{
+    width: 30%;
+}
+
+#freeboard-table-tds a{
+    margin-top: 2%;
+    font-weight: 700;
+    font-size: 1.25rem;
+    overflow: hidden;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: normal;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-decoration: none;
+}
+
+#freeboard-table-tds a:hover {
+    color: #6868ff !important;
+}
+
+.text-start{
+    font: bold;
+}
+
+#toggle-target {
+    justify-content: end;
+}
+
+@media (max-width: 1400px) {
+    #commCntIcon {
+        margin-bottom: 6%;
+    }
+  
+    #free-keywordbtn {
+        position: fixed!important;;
+        bottom: 5%;
+        right: 10%;
+        width: 80%;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-radius: 2rem;
+        font-size: 1.5rem;
+      }
+
+      #freeboard-userinfo {
+        font-size: 0.9rem;
+      }
+
+      #scrollTopCircle {
+        display: none!important;
+      }
+
+      #freeCommContainer {
+        padding-top: 1%;
+        padding-bottom: 5%;
+      }
+
+      #freeboard-table-tds {
+        margin-bottom: 4%;
+      }
+
+      #freeBoardEditDele button{
+        font-size: 0.8rem;
+      }
+
+      #freeboard-detail-top button{
+        font-size: 0.8rem;
+      }
+      
+      #free-likebtn {
+        font-size: 0.8rem;
+        border: 0.1rem solid #dde0ea;
+        border-radius: 12rem;
+        z-index: 2;
+        width: 70px;
+        height: 35px;
+        text-align: center;
+    }
+}

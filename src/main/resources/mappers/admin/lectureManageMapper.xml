@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.admin.lectureManage.dao.LectureManageDao">
+
+    <insert id="lectInsert" parameterType="com.care.bedu.lecture.vo.LectureVO">
+        INSERT INTO
+            b_edu.T_BEDU_LECT(
+                TITLE,
+                TEACHER,
+                LECT_DESC,
+                THUMBNAIL,
+                LECT_SUMMARY,
+                LECT_PERIOD,
+                PRICE,
+                CATE_CODE,
+                CATE_KOR,
+                REG_DATE,
+                FST_REG_ID
+            )
+        VALUES(
+            #{title},
+            #{teacher},
+            #{lectDesc},
+            #{thumbnail},
+            #{lectSum},
+            #{lectPeriod},
+            #{price},
+            #{category},
+            #{korCategory},
+            SYSDATE(),
+            #{regNum}
+        )
+    </insert>
+
+    <update id="lectUpdate" parameterType="com.care.bedu.lecture.vo.LectureVO">
+        UPDATE
+        b_edu.T_BEDU_LECT
+        SET 
+            TEACHER = #{teacher}
+            ,LECT_DESC = #{lectDesc}
+            ,LECT_SUMMARY = #{lectSum}
+            ,LECT_PERIOD = #{lectPeriod}
+            ,PRICE = #{price}
+            ,LAST_REG_ID = #{updateNum}
+            ,LAST_REG_DATE = SYSDATE()
+            <if test='thumbnail != null'>
+                ,THUMBNAIL = #{thumbnail}
+            </if>
+        WHERE LECT_NUM = #{lectNum}
+    </update>
+
+    <delete id="lectDelete">
+        DELETE FROM
+            b_edu.T_BEDU_LECT
+        WHERE 
+            LECT_NUM = #{num}
+    </delete>
+
+</mapper>

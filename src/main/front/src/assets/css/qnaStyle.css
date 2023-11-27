@@ -1,0 +1,443 @@
+/*StudyReview css*/
+#qnaMain {
+    padding-top: 5.5%;
+    margin-left: 3%;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.nareplyeditBtns{
+    display: none;
+}
+
+.qna-detail-main{
+    width: 100%;
+    margin:0 auto;
+    text-align: center;
+    justify-content: center;
+}
+
+#qna-detail-main{
+    padding-top: 5.5%;
+    margin-left: 3%;
+    /* padding-right: 30px; */
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+#qna-detail-replylistes{
+    margin-bottom: 50px;
+    word-wrap: break-word;
+}
+
+.qna-detail-anscon{
+    word-wrap: break-word;
+}
+
+#qna-detail-replyCont{
+    word-wrap: break-word;
+    padding-right: 8%;
+    width: 105%;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    border-radius: 20px 20px / 20px 20px;
+}
+
+.qna-detail-replylistescon{
+    width: 100%;
+}
+
+#qnaboard-table {
+    width: 100%;
+    padding: 25px;
+    margin-bottom:100px;
+}
+
+.qnacontent{
+    position: absolute;
+    margin-top : 32px;
+    width: 60%;
+    word-wrap: break-word;
+
+}
+
+
+#qna-view-side {
+    padding-top: 3%;
+    margin-left: 4%;
+    float: left;
+}
+
+.qna-detail-replytotalicon{
+    margin-top: 30px;
+}
+
+#qnaboard-table th,
+#qnaboard-table td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+
+#freeboard-reviews {
+    margin-bottom: 15px;
+}
+
+#freeboard-reviews-select {
+    border: none;
+}
+
+
+.qnaviewkeyword {
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.searchForm{
+    margin-right: -35px;
+}
+
+#qna-search-btn {
+    margin-left: 15px;
+}
+
+#qna-write{
+    padding-top: 5.5%;
+    margin-left: 3%;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    width: 80%;
+}
+
+.qna-detail-replybtns{
+    display: flex;
+}
+
+.qnareplyeditcontent{
+    display: none;
+}
+
+#qna-writepath-btn {
+    height: 40px;
+    margin-left: 15px;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    background-color: var(--blue) !important
+}
+
+#qnaBoradSearch {
+    float: right;
+}
+
+.h3{
+    font: bold;
+}
+
+#qna-detail-btns{
+    float: right;
+}
+
+#qna-detail-body {
+    width: 90%;
+}
+
+#qnaeditcontent{
+    position: absolute;
+    margin-top : 32px;
+}
+
+.date {
+    
+    margin-left: 20px;
+}
+
+.name {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
+#qnaboard-detail-replywrite{
+    display: none;
+    word-wrap: break-word;
+    width: 50%;
+    margin-bottom: 50px;
+}
+
+.qnaReplyContent {
+    word-wrap: break-word;
+}
+
+
+#qna-detail-replycontent{
+    width: 100%; 
+    height: 100px;
+    resize: none;
+}
+
+.qna-detail-replylist{
+    padding-left: 8%;
+    padding-right: 8%;
+    width: 105%;
+    border:1px #0000FF solid;
+    margin-top:30px;
+    border-radius: 20px 20px / 20px 20px;
+}
+
+.qna-detail-icon{
+    color: aqua;
+}
+
+.qnaboard-detail-rewrite{
+    display: none;
+}
+
+.qnareplyeditall-btn{
+    display: none;
+}
+
+.qnareplyeditBtns{
+    margin-left: 10px;
+}
+
+#qna-detail-btncontent{
+    margin-top: 60px;
+    display: flex;
+}
+
+#qna-userinfo {
+    font-size: 1rem;
+    display: flex;
+}
+
+#qna-comm {
+    margin-left: 20px;
+}
+
+.qna-answer {
+    float: left;
+    display: flex;
+    align-items: middle;
+}
+
+#qna-sort {
+    margin-top: 19px;
+}
+
+#qnaboard-table-tds a{
+    width: 120px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.selectBox{
+    margin-top: 2%;
+}
+
+#qnaSortOption {
+    width: 110px;
+    height: 40px;
+    font-size: 120%;
+    border: none;
+    float: right;
+}
+
+.text-start{
+    font: bold;
+}
+
+#qnaTitle{
+    width: 30%;
+}
+
+
+#qna-date {
+    margin-left: 20px;
+}
+
+#qna-likebtn {
+    float: right;
+    border: 0.1rem solid #dde0ea;
+    width: 100px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 12rem;
+    z-index: 2;
+
+}
+
+#qna-likeyn {
+    float: right;
+}
+
+#qna-detail-contents {
+    margin-bottom: 15px;
+}
+
+/*qnaDetail*/
+#qna-write-content {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 200px;
+    resize:none;
+}
+
+.qna-detail-adminreplyall-btn{
+    border: 0;
+    font-weight: bolder;
+    color: #000000;
+    background-color: transparent;
+}
+
+.qna-detail-editopen-btn{
+    border: 0;
+    font-weight: bolder;
+    color: #000000;
+    background-color: transparent;
+}
+
+.qna-detail-ansconedit{
+    display: none;
+}
+
+#qna-detail-replywriteBtn{
+    margin-left: 40px;
+}
+
+#qnareplyDel-btn{
+    margin-left: 40px;
+}
+
+#qnareplydel-btn{
+    border: 0;
+    font-weight: bolder;
+    color: #000000;
+    background-color: transparent;
+}
+
+#qna-detail-replywrite-btn{
+    border: 0;
+    font-weight: bolder;
+    color: #000000;
+    background-color: transparent;
+}
+
+#qna-detail-ansdel-btn{
+    border: 0;
+    font-weight: bolder;
+    color: #000000;
+    background-color: transparent;
+}
+
+#qnareplyDel-btn
+
+#qna-detail-replyDelBtn{
+    margin-bottom: 1rem !important;
+    margin-left: 85%;
+}
+
+#qnareplyeditform-btn{
+    border: 0;
+    font-weight: bolder;
+    color: #000000;
+    background-color: transparent;
+}
+
+#qna-detail-replywrite{
+    margin-bottom: 1rem !important;
+    margin-left: 85%;
+}
+
+#qna-detail-rewrites{
+    display: none;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 200px;
+}
+
+
+
+/*qnaBoardEdit*/
+#qna-edit-content {
+    width: 100%;
+    height: 200px;
+    resize:none;
+}
+
+#comm-main-side {
+    float: left;
+    padding-top: 5%;
+    padding-left: 6%;
+}
+
+.comm-main-cate{
+    list-style-type: none;
+    padding: 0;
+}
+
+
+#qna-detail-contents {
+    word-wrap: break-word;
+}
+
+.hr {
+    margin-bottom: 50px;
+
+}
+
+
+#qnaboard-detail-rewrite{
+    background-color: var(--blue) !important
+}
+
+#qnaboard-detail-replybtn{
+    background-color: var(--blue) !important
+}
+
+#qna-search-icon {
+    position: relative;
+    z-index: 2;
+    margin-right: -8%;
+}
+
+.qna-writebtn{
+    background-color: var(--blue) !important;
+    margin-right: 10px;
+}
+
+#buttonSet{
+    float: right;
+    margin: 10px;
+}
+
+.writeMain{
+    float: left;
+    padding-top: 5%;
+    padding-left: 6%;
+}
+
+.qnaView{
+    float: left;
+    padding-top: 5%;
+    padding-left: 6%;
+}
+
+
+.ck-content{
+    height: 500px !important;
+}
+
+.qnaDetail{
+    float: left;
+    padding-top: 5%;
+    padding-left: 6%;
+}

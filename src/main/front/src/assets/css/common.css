@@ -1,0 +1,209 @@
+:root{
+    --blue : rgb(48, 48, 118);
+    --black : rgb(35, 24, 21);
+    --yellow : rgb(237, 194, 104);
+    --blue-50 : rgba(48, 48, 118, 0.5);
+    --black-50 : rgba(35, 24, 21, 0.5);
+    --yellow-50 : rgba(237, 194, 104, 0.5);
+    --blue-75 : rgba(48, 48, 118, 0.75);
+    --black-75 : rgba(35, 24, 21, 0.75);
+    --yellow-75 : rgba(237, 194, 104, 0.75);
+    --blue-100 : rgb(48, 48, 118, 1);
+    --black-100 : rgb(35, 24, 21, 1);
+    --yellow-100 : rgb(237, 194, 104, 1);
+}
+
+#app{
+    height: 100%;
+    font-family: 'Noto Sans KR' ,'NanumMyeongjo', 'Times';
+}
+
+html, body {
+    min-height: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0% 5% 0% 5%;
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+body {
+    background-color: #EDC268;
+}
+
+footer {
+    margin-top: 2%;
+    padding-bottom: 2%;
+}
+
+header {
+    margin: 0% 5% 0% 5%;
+    padding-top: 3%;
+    padding-bottom: 1%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* 이용약관 h4태그 CSS */
+  #agreeItem h4 {
+    font-size: 1.2rem !important;
+  }
+
+  @media (max-width: 1300px) {
+    #wrap {
+        min-height: auto;
+        height: auto;
+        margin: 0% 5% 0% 5%;
+        background-color: #fff;
+        border-radius: 30px;
+    }
+  }
+
+/* Nano Sans Kr 폰트 */
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    src: url('../fonts/Noto_Sans_KR/NotoSansKR-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    src: url('../fonts/Noto_Sans_KR/NotoSansKR-Bold.otf');
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 300;
+    src: url('../fonts//Noto_Sans_KR/NotoSansKR-Light.otf');
+}
+
+
+/* times 폰트 */
+@font-face {
+    font-family: 'Times';
+    font-weight: 400;
+    src: url('../fonts/times/times.ttf');
+}
+
+@font-face {
+    font-family: 'Times';
+    font-weight: 700;
+    src: url('../fonts/times/times-bold.ttf');
+}
+
+
+/* 나눔명조 폰트*/
+@font-face {
+    font-family: 'NanumMyeongjo';
+    src: url('../fonts/nanum-myeongjo/NanumMyeongjo.otf');
+}
+
+@font-face {
+    font-family: 'NanumMyeongjo';
+    font-weight: bold;
+    src: url('../fonts/nanum-myeongjo/NanumMyeongjoBold.otf');
+}
+
+@font-face {
+    font-family: 'NanumMyeongjo';
+    font-weight: bolder;
+    src: url('../fonts/nanum-myeongjo/NanumMyeongjoExtraBold.otf');
+}
+
+/* 공통 컬러 클래스 */
+.bedu-bg-custom-blue{
+    background-color: var(--blue) !important;
+}
+
+.bedu-bg-custom-blue-50{
+    background-color: var(--blue-50) !important;
+}
+
+.bedu-bg-custom-blue-75{
+    background-color: var(--blue-75) !important;
+}
+
+
+.bedu-bg-custom-blue:hover, .bedu-bg-custom-yellow:hover, .bedu-bg-custom-black:hover{
+    opacity: 0.9;
+}
+
+.bedu-bg-custom-yellow{
+    background-color: var(--yellow) !important;
+}
+
+.bedu-bg-custom-yellow-50{
+    background-color: var(--yellow-50) !important;
+}
+
+.bedu-bg-custom-yellow-75{
+    background-color: var(--yellow-75) !important;
+    transition: all 0.25s;
+}
+
+.bedu-bg-custom-yellow-100{
+    background-color: var(--yellow-100) !important;
+    transition: all 0.25s;
+}
+
+
+.bedu-bg-custom-black{
+    background-color: var(--black) !important;
+}
+
+.bedu-bg-custom-black-50{
+    background-color: var(--black-50) !important;
+}
+
+.bedu-bg-custom-black-75{
+    background-color: var(--black-75) !important;
+}
+
+.bedu-bg-custom-black-100{
+    background-color: var(--black-100) !important;
+}
+
+
+.bedu-text-custom-blue{
+    color: var(--blue) !important;
+}
+
+.bedu-text-custom-blue-50{
+    color: var(--blue-50) !important;
+}
+
+.bedu-text-custom-blue-75{
+    color: var(--blue-75) !important;
+}
+
+.bedu-text-custom-blue-100{
+    color: var(--blue-100) !important;
+}
+
+
+.bedu-text-custom-yellow{
+    color: var(--yellow) !important;
+}
+
+.bedu-text-custom-black{
+    color: var(--black) !important;
+}
+
+.cursor-pointer{
+    cursor: pointer !important;
+}
+
+.ck-content{
+    height: 500px !important; /* 원하는 높이로 변경 */
+}
+
+.vh-50{
+    height: 50vh !important;
+}

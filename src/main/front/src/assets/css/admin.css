@@ -1,0 +1,15 @@
+.scroll-y{
+    overflow-y: scroll;
+}
+
+#file-upload-progress{
+    transition: 0.1s;
+}
+
+.vh-50{
+    height: 50vh !important;
+}
+
+.video-container{
+    min-height: 300px;
+}

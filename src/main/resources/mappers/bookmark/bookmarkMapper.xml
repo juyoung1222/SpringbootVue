@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.bookmark.dao.BookmarkDAO">
+    
+    <select id="getBookmark" parameterType="com.care.bedu.bookmark.vo.BookmarkVO" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            B_EDU.T_BEDU_BOOKMARK
+        WHERE
+            USER_NAME = #{userName} AND
+            LECT_NUM = #{lectNum}
+    </select>
+
+    <insert id="save" parameterType="com.care.bedu.bookmark.vo.BookmarkVO">
+        INSERT INTO
+            B_EDU.T_BEDU_BOOKMARK
+        (
+            USER_NAME,
+            LECT_NUM,
+            BOOKMARK_DATE
+        )
+        VALUES(
+            #{userName},
+            #{lectNum},
+            NOW()
+        )
+    </insert>
+    
+    <delete id="remove" parameterType="com.care.bedu.bookmark.vo.BookmarkVO">
+        DELETE FROM
+            B_EDU.T_BEDU_BOOKMARK
+        WHERE
+            USER_NAME = #{userName} AND
+            LECT_NUM = #{lectNum}
+    </delete>
+
+
+    <select id="getList" resultType="com.care.bedu.bookmark.vo.BookmarkVO">
+        SELECT
+            A.bookmark_num as num,
+            A.user_name as userName,
+            A.lect_num as lectNum,
+            A.bookmark_date as bookmarkDate,
+            B.TITLE as title,
+            B.TEACHER as teacher,
+            B.THUMBNAIL AS thumbnail,
+            B.LECT_PERIOD as lectPeriod,
+            B.LECT_SUMMARY as lectSum,
+            ROUND(AVG(C.RW_GRADE)) as score,
+            D.users
+        FROM
+            B_EDU.t_bedu_bookmark A
+        INNER JOIN
+            B_EDU.T_BEDU_LECT B
+        ON 
+            A.LECT_NUM = B.LECT_NUM
+        LEFT JOIN
+            B_EDU.T_BEDU_RW_BD C
+        ON
+            A.LECT_NUM = C.LECT_NUM
+        LEFT JOIN
+            (
+                SELECT
+                    USER_LECT_NUM,
+                    LECT_NUM,
+                    COUNT(USER_LECT_NUM) AS USERS
+                FROM
+                    B_EDU.T_BEDU_USER_LECT
+                GROUP BY
+                    LECT_NUM
+            ) D
+        ON
+            A.LECT_NUM = D.LECT_NUM
+        WHERE
+            A.USER_NAME = #{userName}
+        GROUP BY
+            A.LECT_NUM
+        ORDER BY
+        <choose>
+            <when test="order.equals('title')">
+                B.TITLE
+            </when>
+            <when test="order.equals('newst')">
+                A.BOOKMARK_DATE
+            </when>
+            <when test="order.equals('score')">
+                SCORE
+            </when>
+            <otherwise>
+                D.USERS
+            </otherwise>
+        </choose>
+            DESC
+        LIMIT
+            #{begin}, 9
+    </select>
+
+    <select id="getTotal" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            B_EDU.T_BEDU_BOOKMARK
+        WHERE
+            USER_NAME = #{userName}
+    </select>
+
+    <select id="getNewest" resultType="com.care.bedu.bookmark.vo.BookmarkVO">
+        SELECT
+            A.bookmark_num as num,
+            A.user_name as userName,
+            A.lect_num as lectNum,
+            A.bookmark_date as bookmarkDate,
+            B.TITLE as title,
+            B.TEACHER as teacher,
+            B.THUMBNAIL AS thumbnail,
+            B.LECT_PERIOD as lectPeriod,
+            B.LECT_SUMMARY as lectSum,
+            ROUND(AVG(C.RW_GRADE)) as score,
+            D.users
+        FROM
+            B_EDU.t_bedu_bookmark A
+        INNER JOIN
+            B_EDU.T_BEDU_LECT B
+        ON 
+            A.LECT_NUM = B.LECT_NUM
+        LEFT JOIN
+            B_EDU.T_BEDU_RW_BD C
+        ON
+            A.LECT_NUM = C.LECT_NUM
+        LEFT JOIN
+            (
+                SELECT
+                    USER_LECT_NUM,
+                    LECT_NUM,
+                    COUNT(USER_LECT_NUM) AS USERS
+                FROM
+                    B_EDU.T_BEDU_USER_LECT
+                GROUP BY
+                    LECT_NUM
+            ) D
+        ON
+            A.LECT_NUM = D.LECT_NUM
+        WHERE
+            A.USER_NAME = #{userName}
+        GROUP BY
+            A.LECT_NUM
+        ORDER BY
+                A.BOOKMARK_DATE
+            DESC
+        LIMIT
+            0, 3
+    </select>
+
+
+</mapper>

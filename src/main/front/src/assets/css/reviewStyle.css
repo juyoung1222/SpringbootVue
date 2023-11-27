@@ -1,0 +1,227 @@
+/*StudyReview css 작성자 원준용*/
+.review-group {
+    padding: 25px;
+}
+
+.buttonColor{
+    background-color: rgb(237, 194, 104) !important;
+    text-decoration: none;  
+}
+
+.mk-c-tab.col8 {
+    border: 1px solid #eee;
+    border-bottom: 0;
+    border-right: 0;
+    padding: 0;
+    text-decoration: none;
+    
+}
+
+.mk-c-tab {
+    text-align: center;
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.mk-c-tab > li {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+}
+
+.mk-c-tab > li > a {
+    display: block;
+    padding: 12px 10px;
+    background: #f8f8f8;
+    border-right: 1px solid #eee;
+    font-weight: 300;
+    color: inherit;
+}
+
+.review-search {
+    float: right;   
+}
+
+.review-search-bar {
+    float: right;
+    align-items: center;
+    margin-left: 50px;
+}
+
+#review-search-input input {
+    width: 100%;
+    padding: 3px 10px;
+    margin-right: -10px;
+    border: 2px solid black;
+    border-radius: 20px;
+    outline: none;
+    
+}
+
+.review-a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.review-table {
+    width: 100%;
+    margin-bottom:100px;
+}
+
+.review-table th,
+.review-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+
+.review-star-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-star-rating .review-star {
+    color: gold;
+}
+
+#review-table .review-writer {
+    display: block;
+    width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+.review-write-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+    padding: 10px;
+}
+
+.review-write-button {
+    width: 150px;
+    height: 50px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+}
+#scroll-container {
+    position: relative;
+    padding: 25px;
+}
+
+.title{
+    
+    font-size: 100%;
+}
+
+.inptucontent{
+    width: 80%;
+}
+
+.infinite-loading-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+#review-sort {
+    float: right;
+}
+
+.textStart {
+    margin-left: 2%;
+}
+
+#sortOption {
+    width: 110px;
+    height: 40px;
+    font-size: 100%;
+    border: none;
+    outline: none;
+}
+
+#infiniteReview{
+    padding: 50px;
+}
+
+#review-search-icon {
+    position: relative;
+    z-index: 2;
+    margin-right: -10%;
+}
+
+/*Review Write css*/
+
+
+#review-write {
+    margin-bottom: 20px;
+}
+
+#review-label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.writeForm{
+    margin-left: 15%;
+}
+
+.review-content{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 1.2rem;
+}
+
+.reviewContent{
+    width: 100%;
+    height: 6.25rem;
+    resize: none;
+}
+
+.star-rating {
+    font-size: 24px;
+    float: right;
+}
+
+.star-rating span {
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.star-rating span.filled {
+    color: gold;
+}
+
+#review-WriteBtn {
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.content{
+    width: 80%;
+}
+
+.inputContent{
+    height: 150px;
+}

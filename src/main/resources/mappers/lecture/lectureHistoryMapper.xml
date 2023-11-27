@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.lecture.dao.LectureHistoryDAO">
+
+    <insert id="watchHistorySave" parameterType="com.care.bedu.lecture.vo.LectureHistoryVO">
+        INSERT INTO
+            b_edu.t_bedu_history(
+                user_name,
+                lect_dtl_num,
+                history_record_day,
+                history_end_time
+            )
+        VALUES(
+            #{userName},
+            #{lectDtlNum},
+            NOW(),
+            #{endTime}
+        )
+        ON DUPLICATE KEY UPDATE
+            history_end_time = #{endTime},
+            history_record_day = NOW()
+    </insert>
+
+    <select id="getHistory" parameterType="com.care.bedu.lecture.vo.LectureHistoryVO" resultType="com.care.bedu.lecture.vo.LectureHistoryVO">
+        SELECT
+            history_num as num,
+            user_name as userName,
+            lect_dtl_num as lectDtlNum,
+            history_record_day as historyRecordDay,
+            history_end_time as endTime,
+            complete as complete
+        FROM
+            b_edu.t_bedu_history
+        WHERE
+            USER_NAME = #{userName} AND
+            LECT_DTL_NUM = #{lectDtlNum}
+    </select>
+
+    <update id="setComplete">
+        UPDATE 
+            B_EDU.T_BEDU_HISTORY
+        SET
+            COMPLETE = #{complete}
+        WHERE
+            user_name = #{userName} AND
+            lect_dtl_num = #{lectDtlNum}
+    </update>
+
+</mapper>

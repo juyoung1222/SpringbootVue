@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.community.qna.dao.QnaDAO">
+	
+	<select resultType="com.care.bedu.community.qna.vo.QnaVO" id="viewlist">
+		 SELECT
+		   QS_BD_NUM AS qnaBdNum,
+		   TITLE,
+		   QS_DATE AS qnaDate, 
+		   QS_CNT AS qnaCnt,
+		   QS_LIKE_CNT AS qnaLikeCnt,
+		   USER_NAME AS userName
+		 FROM T_BEDU_QS
+		 ORDER BY QS_BD_NUM DESC
+		 LIMIT #{page}, 10
+	 </select>
+	
+	<insert id="viewWrite">
+		INSERT INTO T_BEDU_QS(
+		  USER_NAME,
+		  TITLE,
+		  CONTENT,
+		  QS_CNT,
+		  QS_LIKE_CNT,
+		  QS_DATE,
+		  REG_DATE, 
+		  REG_ID
+		)VALUES(
+		  #{userName},
+		  #{title},
+		  #{content},
+		  #{qnaCnt},
+		  #{qnaLikeCnt},
+		  SYSDATE(),
+		  SYSDATE(),
+		  #{regId}
+		)
+	</insert>
+	
+	<select id="viewone" resultType="com.care.bedu.community.qna.vo.QnaVO">
+		SELECT
+		 QS_BD_NUM AS qnaBdNum, 
+		 TITLE, 
+		 CONTENT, 
+		 QS_CNT AS qnaCnt, 
+		 QS_LIKE_CNT AS qnaLikeCnt, 
+		 QS_DATE AS qnaDate, 
+		 REG_ID AS regId,
+		 USER_NAME AS userName
+		FROM T_BEDU_QS
+		WHERE QS_BD_NUM = #{num}
+	</select>
+	
+	<select id="nameview" resultType="com.care.bedu.community.qna.vo.QnaVO">
+		SELECT
+		   QS_BD_NUM AS qnaBdNum,
+		   TITLE,
+		   CONTENT,
+		   QS_DATE AS qnaDate,
+		   QS_CNT AS qnaCnt,
+		   QS_LIKE_CNT AS qnaLikeCnt,
+		   USER_NAME AS userName
+		 FROM T_BEDU_QS
+		 WHERE USER_NAME = #{userName}
+		 ORDER BY QS_BD_NUM DESC
+		 LIMIT #{page}, 10
+	</select>
+	
+	<update id="viewupdate">
+		UPDATE
+		 T_BEDU_QS SET TITLE = #{title}, CONTENT = #{content}, REG_DATE = SYSDATE()
+		WHERE QS_BD_NUM = #{qnaBdNum}
+	</update>
+	
+	<delete id="viewdelete">
+		DELETE
+		 FROM T_BEDU_QS
+		WHERE QS_BD_NUM = #{qnaBdNum}
+	</delete>
+	
+	<delete id="viewansdelete">
+		DELETE
+		 FROM T_BEDU_ANS
+		WHERE QS_BD_NUM = #{qnaBdNum}
+	</delete>
+	
+	<delete id="viewreplydelete">
+		DELETE
+		 FROM T_BEDU_REPLY
+		WHERE QS_NUM= #{qnaBdNum}
+	</delete>
+	
+	<select id="viewsearch" resultType="com.care.bedu.community.qna.vo.QnaVO">
+		SELECT 
+		 QS_BD_NUM AS qnaBdNum, 
+		 TITLE, 
+		 USER_NAME AS userName, 
+		 QS_CNT AS qnaCnt, 
+		 QS_DATE AS qnaDate
+		FROM T_BEDU_QS
+		<if test="keyword != null">
+			WHERE TITLE LIKE concat('%', #{keyword}, '%') OR CONTENT LIKE concat('%', #{keyword}, '%')
+		</if>
+		ORDER BY QS_BD_NUM DESC
+	</select>
+	
+	<select id="getuserId" resultType="com.care.bedu.community.qna.vo.QnaVO">
+		SELECT
+		  USER_ID as userId
+		FROM T_BEDU_USER
+		WHERE USER_NAME = #{userName} 
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		SELECT
+		  COUNT(*)
+		FROM T_BEDU_QS
+	</select>
+	
+	<update id="qnaCntUp">
+		UPDATE
+		 T_BEDU_QS SET QS_CNT = QS_CNT + 1
+		WHERE QS_BD_NUM = #{num}
+	</update>
+	
+	<update id="likeUp">
+		UPDATE
+		 T_BEDU_QS SET QS_LIKE_CNT = QS_LIKE_CNT + 1
+		WHERE QS_BD_NUM = #{num}
+	</update>
+	
+	<update id="likeDown">
+		UPDATE
+		 T_BEDU_QS SET QS_LIKE_CNT = QS_LIKE_CNT - 1
+		WHERE QS_BD_NUM = #{num}
+	</update>
+	
+	<select id="likeName" resultType="int">
+		SELECT
+		  COUNT(LIKE_NUM) 
+		FROM T_BEDU_LIKE_CNT
+		WHERE qs_bd_num=#{qsnum} AND USER_NAME=#{userid} AND LIKE_YN=#{likeyn}
+	</select>
+	
+</mapper>

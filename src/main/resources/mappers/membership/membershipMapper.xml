@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.membership.dao.MembershipDAO">
+
+	<insert id="getSub" parameterType="com.care.bedu.membership.vo.MembershipVO">
+		INSERT INTO
+			B_EDU.T_BEDU_SUB
+			(
+				SUB_NM,
+				SUB_TYPE,
+				SUB_BEGIN_DATE,
+				SUB_END_DATE
+			)
+		VALUES(
+			#{subName},
+			#{subType},
+			SYSDATE(),
+			<choose>
+				<when test="subType.equals('month')">
+					DATE_ADD(SYSDATE(), INTERVAL 30 DAY)
+				</when>
+				<when test="subType.equals('year')">
+					DATE_ADD(SYSDATE(), INTERVAL 365 DAY)
+				</when>
+			</choose>
+		)
+	</insert>
+	
+	<select id="getSubInfo" resultType="com.care.bedu.membership.vo.MembershipVO">
+		SELECT
+			SUB_NUM AS subNum,
+			SUB_NM AS subName,
+			SUB_TYPE AS subType,
+			SUB_BEGIN_DATE as begin,
+			SUB_END_DATE as end
+		FROM
+			B_EDU.T_BEDU_SUB
+		WHERE
+			SUB_NM = #{nickname}
+	</select>
+
+</mapper>

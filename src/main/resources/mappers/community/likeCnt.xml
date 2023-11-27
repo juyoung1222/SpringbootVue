@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.community.qna.dao.LikeCntDAO">
+	
+	<insert id="likeCntSave">
+		INSERT INTO T_BEDU_LIKE_CNT(
+		  USER_NAME,
+		  QS_BD_NUM,
+		  REG_DATE, 
+		  REG_ID,
+		  LIKE_YN
+		)VALUES(
+		  #{userName},
+		  #{qsBdNum},
+		  SYSDATE(),
+		  #{regId},
+		  #{likeyn}
+		)
+	</insert>
+	
+	<insert id="cntqnaSave">
+		INSERT INTO T_BEDU_LIKE_CNT(
+		  USER_NAME,
+		  QS_BD_NUM,
+		  REG_DATE, 
+		  REG_ID
+		)VALUES(
+		  #{userName},
+		  #{qsBdNum},
+		  SYSDATE(),
+		  #{regId}
+		)
+	</insert>
+	
+	<select id="qnaEqcnt" resultType="int">
+		SELECT
+		  COUNT(LIKE_NUM) 
+		FROM T_BEDU_LIKE_CNT
+		WHERE QS_BD_NUM = #{qnanum} AND USER_NAME=#{userName}
+	</select>
+	
+	<select id="getlikenum" resultType="int">
+		SELECT
+		 LIKE_NUM 
+		FROM T_BEDU_LIKE_CNT
+		WHERE QS_BD_NUM = #{qnum} and USER_NAME = #{userName} and LIKE_YN =#{likeyn}
+	</select>
+	
+	<delete id="likedel">
+		DELETE
+		 FROM T_BEDU_LIKE_CNT
+		WHERE LIKE_NUM = #{num}
+	</delete>
+	
+	
+</mapper>

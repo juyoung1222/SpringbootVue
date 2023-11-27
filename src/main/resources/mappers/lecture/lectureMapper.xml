@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.lecture.dao.LectureDAO">
+
+	<select id="getLectureList" resultType="com.care.bedu.lecture.vo.LectureVO" parameterType="hashmap">
+		SELECT 
+			A.LECT_NUM as lectNum, 
+			A.TITLE, 
+			A.TEACHER, 
+			COUNT(B.LECT_NUM) AS TOTAL, 
+			A.LECT_PERIOD as lectPeriod,
+			A.THUMBNAIL, 
+			A.LECT_CNT as lectCnt, 
+			A.REG_DATE as regDate, 
+			format(A.PRICE,0) as PRICE, 
+			A.LECT_DESC as lectDesc,
+			sec_to_time(SUM(B.LECT_DTL_TIME)) AS TOTALTIMES, 
+			A.CATE_CODE, 
+			A.CATE_KOR,
+			A.LECT_SUMMARY AS lectSum
+		FROM (
+			SELECT 
+				LECT_NUM,
+				TITLE,
+				TEACHER,
+				LECT_DESC,
+				THUMBNAIL,
+				LECT_CNT,
+				LECT_LIKE_CNT,
+				LECT_PERIOD,
+				PRICE,
+				CATE_CODE,
+				CATE_KOR,
+				REG_DATE,
+				FST_REG_ID,
+				LECT_SUMMARY
+			FROM 
+				b_edu.T_BEDU_LECT WHERE CATE_CODE = #{category}) A
+		LEFT JOIN T_BEDU_LECT_DTL B
+		ON A.LECT_NUM = B.LECT_NUM
+		GROUP BY 
+			A.LECT_NUM
+		ORDER BY LECTNUM
+	</select>
+
+	<select id="getLectureDetail" resultType="com.care.bedu.lecture.vo.LectureVO" parameterType="int">
+		SELECT 
+			A.LECT_NUM as lectNum, 
+			A.TITLE, 
+			A.TEACHER, 
+			B.TOTAL AS TOTAL, 
+			A.LECT_PERIOD as lectPeriod,
+			A.THUMBNAIL, 
+			A.LECT_CNT as lectCnt, 
+			A.REG_DATE as regDate, 
+			format(A.PRICE,0) as PRICE, 
+			A.LECT_DESC as lectDesc,
+			ROUND(AVG(C.RW_GRADE)) AS SCORE, 
+			COUNT(C.LECT_NUM) AS SCOREUSERS, 
+			sec_to_time(B.TOTALTIMES) AS TOTALTIMES, 
+			A.CATE_CODE, 
+			A.CATE_KOR,
+			A.LECT_SUMMARY AS lectSum
+		FROM (
+			SELECT 
+				LECT_NUM,
+				TITLE,
+				TEACHER,
+				LECT_DESC,
+				THUMBNAIL,
+				LECT_CNT,
+				LECT_LIKE_CNT,
+				LECT_PERIOD,
+				PRICE,
+				CATE_CODE,
+				CATE_KOR,
+				REG_DATE,
+				FST_REG_ID,
+				LECT_SUMMARY
+			FROM 
+				b_edu.T_BEDU_LECT WHERE LECT_NUM = #{LECT_NUM}) A 
+		LEFT JOIN (
+			SELECT 
+				COUNT(LECT_NUM) AS TOTAL, 
+				SUM(LECT_DTL_TIME) AS TOTALTIMES, 
+				LECT_NUM as lectNum 
+			FROM 
+				b_edu.T_BEDU_LECT_DTL WHERE LECT_NUM = #{LECT_NUM}
+			GROUP BY LECT_NUM	
+			) B
+		ON A.LECT_NUM = B.lectNum 
+		LEFT JOIN (
+			SELECT 
+				RW_GRADE,
+				LECT_NUM
+			FROM 
+				b_edu.T_BEDU_RW_BD 
+			WHERE LECT_NUM = #{LECT_NUM}) C
+		ON A.LECT_NUM = C.LECT_NUM
+		GROUP BY 
+			A.LECT_NUM
+	</select>
+
+	<select id="getVideoList" resultType="com.care.bedu.lecture.vo.LectureDetailVO">
+		SELECT 
+			LECT_DTL_NUM as lectDtlNum,
+			LECT_NUM as lectNum, 
+			LECT_DTL_TITLE as lectDtlTitle, 
+			sec_to_time(LECT_DTL_TIME) AS TIMES,
+			LECT_DTL_INDEX as lectDtlIndex
+		FROM 
+			b_edu.T_BEDU_LECT_DTL 
+		WHERE LECT_NUM = #{LECT_NUM}
+		ORDER BY LECT_DTL_INDEX ASC
+	</select>
+
+	<select id="lectureSearch" resultType="com.care.bedu.lecture.vo.LectureVO"
+	parameterType="hashmap">
+		SELECT 
+			A.LECT_NUM as lectNum, 
+			A.TITLE, 
+			A.TEACHER, 
+			COUNT(B.LECT_NUM) AS TOTAL, 
+			A.LECT_PERIOD as lectPeriod,
+			A.THUMBNAIL, 
+			A.LECT_CNT as lectCnt, 
+			A.REG_DATE as regDate,
+			FORMAT(A.PRICE, 0) AS PRICE, 
+			A.LECT_DESC as lectDesc,
+			SEC_TO_TIME(SUM(B.LECT_DTL_TIME)) AS TOTALTIMES,
+			A.CATE_CODE, 
+			A.CATE_KOR,
+			A.LECT_SUMMARY AS lectSum
+		FROM (
+			SELECT 
+				LECT_NUM,
+				TITLE,
+				TEACHER,
+				LECT_DESC,
+				THUMBNAIL,
+				LECT_CNT,
+				LECT_LIKE_CNT,
+				LECT_PERIOD,
+				PRICE,
+				CATE_CODE,
+				CATE_KOR,
+				REG_DATE,
+				FST_REG_ID,
+				LECT_SUMMARY
+			FROM 
+				b_edu.T_BEDU_LECT WHERE TITLE LIKE CONCAT('%',#{keyword},'%') 
+				) A
+		LEFT JOIN T_BEDU_LECT_DTL B
+		ON A.LECT_NUM = B.LECT_NUM
+		GROUP BY 
+			A.LECT_NUM
+		ORDER BY A.REG_DATE DESC
+		LIMIT #{begin},5
+	</select>
+
+	<select id="searchTotal" resultType="int">
+		SELECT 
+			COUNT(A.LECT_NUM)
+		FROM 
+			(SELECT 
+				LECT_NUM,
+				TITLE,
+				TEACHER,
+				LECT_DESC,
+				THUMBNAIL,
+				LECT_CNT,
+				LECT_LIKE_CNT,
+				LECT_PERIOD,
+				PRICE,
+				CATE_CODE,
+				CATE_KOR,
+				REG_DATE,
+				FST_REG_ID,
+				LECT_SUMMARY
+			FROM 
+				b_edu.T_BEDU_LECT  
+			WHERE 
+				TITLE LIKE CONCAT('%',#{keyword},'%')
+		) A 
+	</select>
+
+	<select id="getNewestLecture" resultType="com.care.bedu.lecture.vo.LectureVO">
+		SELECT 
+			A.LECT_NUM as lectNum, 
+			A.TITLE, 
+			A.TEACHER, 
+			COUNT(B.LECT_NUM) AS TOTAL, 
+			A.LECT_PERIOD as lectPeriod,
+			A.THUMBNAIL, 
+			A.LECT_CNT as lectCnt, 
+			A.REG_DATE as regDate, 
+			FORMAT(A.PRICE, 0) AS PRICE,
+			A.LECT_DESC as lectDesc,
+			A.CATE_CODE, 
+			A.CATE_KOR,
+			A.LECT_SUMMARY AS lectSum
+		FROM (
+			SELECT 
+				LECT_NUM,
+				TITLE,
+				TEACHER,
+				LECT_DESC,
+				THUMBNAIL,
+				LECT_CNT,
+				LECT_LIKE_CNT,
+				LECT_PERIOD,
+				PRICE,
+				CATE_CODE,
+				CATE_KOR,
+				REG_DATE,
+				FST_REG_ID,
+				LECT_SUMMARY
+			FROM 
+				b_edu.T_BEDU_LECT) A 
+		LEFT JOIN b_edu.T_BEDU_LECT_DTL B
+		ON A.LECT_NUM = B.LECT_NUM
+		GROUP BY A.LECT_NUM
+		ORDER BY A.REG_DATE DESC
+		LIMIT 0,5;
+	</select>
+
+	<select id="getReview" resultType="com.care.bedu.review.vo.ReviewVO">
+		SELECT 
+			title, 
+			USER_NAME as writer,	
+			CONTENT as content,
+			RW_GRADE as rwGrade,
+			RW_DATE as rwDate
+		FROM 
+			b_edu.T_BEDU_RW_BD WHERE LECT_NUM = #{num}
+		ORDER BY RW_DATE
+		LIMIT 0,5
+	</select>
+
+	<insert id="addToCart" parameterType="hashmap">
+		INSERT INTO b_edu.T_BEDU_CART(
+			CART_LECT_NUM,
+			CART_USER_NAME,
+			CART_LECT_NAME
+		)
+		SELECT 
+			#{lectNum},
+			#{userNum},
+			#{lectName}
+		FROM 
+			DUAL
+		WHERE NOT EXISTS (
+			SELECT 0 
+			FROM
+				b_edu.T_BEDU_CART
+			WHERE 
+				CART_LECT_NUM = #{lectNum} AND CART_USER_NAME = #{userNum} AND CART_LECT_NAME = #{lectName}
+		)
+	</insert>
+
+	<select id="getCart" resultType="com.care.bedu.lecture.vo.LectureVO">
+		SELECT
+			A.CART_LECT_NUM AS lectNum,
+			B.TITLE,
+			B.TEACHER,
+			B.LECT_SUMMARY as lectSum,
+			B.THUMBNAIL,
+			FORMAT(B.PRICE, 0) AS PRICE
+		FROM
+			b_edu.T_BEDU_CART A
+		LEFT JOIN b_edu.t_bedu_lect B
+		ON A.CART_LECT_NUM = B.LECT_NUM
+		WHERE
+			A.CART_USER_NAME = #{num}
+	</select>
+
+	<delete id="removeFromCart" parameterType="hashmap">
+		DELETE FROM 
+			b_edu.T_BEDU_CART 
+		WHERE 
+			CART_USER_NAME = #{userNum} AND
+			CART_LECT_NUM = #{lectNum}
+	</delete>
+
+	<select id="getLesson" resultType="com.care.bedu.lecture.vo.LectureDetailVO">
+		SELECT
+			LECT_DTL_NUM as lectDtlNum,
+			LECT_DTL_TITLE as lectDtlTitle,
+			LECT_NUM as lectNum,
+			LECT_VIDEO_URL as lessonUrl,
+			LECT_DTL_INDEX as lectDtlIndex
+		FROM
+			b_edu.T_BEDU_LECT_DTL
+		WHERE LECT_DTL_NUM = #{num}
+	</select>
+
+	<select id="getAllLectures" resultType="com.care.bedu.lecture.vo.LectureVO">
+		SELECT
+			LECT_NUM as lectNum,
+			TITLE,
+			TEACHER,
+			LECT_DESC as lectDesc,
+			THUMBNAIL,
+			LECT_CNT as lectCnt,
+			LECT_LIKE_CNT,
+			LECT_SUMMARY as lectSum,
+			LECT_PERIOD as lectPeriod,
+			PRICE,
+			CATE_CODE as category,
+			CATE_KOR as korCategory,
+			REG_DATE as regDate,
+			FST_REG_ID as regNum
+		FROM
+			b_edu.T_BEDU_LECT
+	</select>
+
+	<select id="signUpChk" parameterType="hashmap" resultType="int">
+		SELECT
+			COUNT(USER_LECT_NUM)
+		FROM
+			b_edu.T_BEDU_USER_LECT
+		WHERE
+			LECT_NUM = #{num} AND USER_NAME = #{userName}
+	</select>
+
+	<insert id="addToMyPage" parameterType="hashmap">
+		INSERT INTO
+			b_edu.T_BEDU_USER_LECT(
+				USER_NAME,
+				LECT_NUM,
+				LECT_REG_DATE,
+				LECT_NM
+			)
+		VALUES(
+			#{userName},
+			#{lectNum},
+			NOW(),
+			#{lectName}
+		)
+	</insert>
+
+	<select id="getMyPageList" resultType="com.care.bedu.lecture.vo.UserLectureVO">
+		SELECT
+			USER_LECT_NUM as userLectNum,
+			USER_NAME as userName,
+			LECT_NUM as lectNum,
+			LECT_REG_DATE as lectRegDate
+		FROM
+			b_edu.T_BEDU_USER_LECT
+		WHERE 
+			USER_NAME = #{userName}
+	</select>
+
+	<select id="getMyPageChk" parameterType="com.care.bedu.lecture.vo.UserLectureVO" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			b_edu.T_BEDU_USER_LECT
+		WHERE 
+			USER_NAME = #{userName} AND LECT_NUM = #{lectNum}
+	</select>
+
+
+
+</mapper>

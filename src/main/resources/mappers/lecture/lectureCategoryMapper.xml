@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.lecture.dao.LectureCategoryDAO">
+
+    <select id="getCategories" resultType="com.care.bedu.lecture.vo.LectureCategoriesVO">
+        SELECT
+            LECT_FILD_NUM as lectFildNum,
+            LECT_TOP_CATE as lectTopCate,
+            LECT_TOP_CATE_KOR as lectTopCateKor,
+            LECT_MID_CATE as lectMidCate,
+            LECT_MID_CATE_KOR as lectMidCateKor,
+            LECT_BOT_CATE as lectBotCate,
+            LECT_BOT_CATE_KOR as lectBotCateKor,
+            PARENT_CODE as parentCode,
+            LEVEL as level,
+            REG_DATE as regDate,
+            REG_ID as regId,
+            LECT_ICON as lectIcon
+        FROM
+            b_edu.t_bedu_lect_fild
+    </select>
+
+    <select id="getBot" resultType="com.care.bedu.lecture.vo.LectureCategoriesVO">
+        SELECT
+            LECT_FILD_NUM as lectFildNum,
+            LECT_TOP_CATE as lectTopCate,
+            LECT_TOP_CATE_KOR as lectTopCateKor,
+            LECT_MID_CATE as lectMidCate,
+            LECT_MID_CATE_KOR as lectMidCateKor,
+            LECT_BOT_CATE as lectBotCate,
+            LECT_BOT_CATE_KOR as lectBotCateKor,
+            PARENT_CODE as parentCode,
+            LEVEL as level,
+            REG_DATE as regDate,
+            REG_ID as regId,
+            LECT_ICON as lectIcon
+        FROM
+            b_edu.t_bedu_lect_fild
+        WHERE PARENT_CODE = #{mid} AND LEVEL = 3
+        ORDER BY LECT_FILD_NUM
+    </select>
+
+    <select id="getTopLevel" resultType="com.care.bedu.lecture.vo.LectureCategoriesVO">
+        SELECT
+            LECT_FILD_NUM as lectFildNum,
+            LECT_TOP_CATE as lectTopCate,
+            LECT_TOP_CATE_KOR as lectTopCateKor,
+            LECT_MID_CATE as lectMidCate,
+            LECT_MID_CATE_KOR as lectMidCateKor,
+            LECT_BOT_CATE as lectBotCate,
+            LECT_BOT_CATE_KOR as lectBotCateKor,
+            PARENT_CODE as parentCode,
+            LEVEL as level,
+            REG_DATE as regDate,
+            REG_ID as regId,
+            LECT_ICON as lectIcon
+        FROM
+            b_edu.t_bedu_lect_fild
+        WHERE LEVEL = 1
+    </select>
+    <select id="getMidLevel" resultType="com.care.bedu.lecture.vo.LectureCategoriesVO">
+        SELECT
+            LECT_FILD_NUM as lectFildNum,
+            LECT_TOP_CATE as lectTopCate,
+            LECT_TOP_CATE_KOR as lectTopCateKor,
+            LECT_MID_CATE as lectMidCate,
+            LECT_MID_CATE_KOR as lectMidCateKor,
+            LECT_BOT_CATE as lectBotCate,
+            LECT_BOT_CATE_KOR as lectBotCateKor,
+            PARENT_CODE as parentCode,
+            LEVEL as level,
+            REG_DATE as regDate,
+            REG_ID as regId,
+            LECT_ICON as lectIcon
+        FROM
+            b_edu.t_bedu_lect_fild
+        WHERE LEVEL = 2
+    </select>
+    <select id="getBotLevel" resultType="com.care.bedu.lecture.vo.LectureCategoriesVO">
+        SELECT
+            LECT_FILD_NUM as lectFildNum,
+            LECT_TOP_CATE as lectTopCate,
+            LECT_TOP_CATE_KOR as lectTopCateKor,
+            LECT_MID_CATE as lectMidCate,
+            LECT_MID_CATE_KOR as lectMidCateKor,
+            LECT_BOT_CATE as lectBotCate,
+            LECT_BOT_CATE_KOR as lectBotCateKor,
+            PARENT_CODE as parentCode,
+            LEVEL as level,
+            REG_DATE as regDate,
+            REG_ID as regId,
+            LECT_ICON as lectIcon
+        FROM
+            b_edu.t_bedu_lect_fild
+        WHERE LEVEL = 3
+    </select>
+
+</mapper>

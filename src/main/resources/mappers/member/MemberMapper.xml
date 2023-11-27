@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.bedu.user.dao.MemberDAO">
+	<!-- 회원가입 -->
+	<insert id="register" parameterType="com.care.bedu.user.vo.MemberVO">
+  		INSERT INTO t_bedu_user (
+      		USER_NUM, 
+      		USER_ID, 
+      		USER_PW, 
+      		USER_NAME, 
+      		REG_DATE, 
+      		USER_CLS, 
+      		USER_REG_DATE, 
+      		USER_WITH_DRAW_YN)
+  		VALUES(
+      		#{usernum}, 
+      		#{email}, 
+      		#{password}, 
+      		#{nickname}, 
+      		#{regDate}, 
+      		#{cls}, 
+      		#{urd}, 
+      		#{udy})
+	</insert>
+
+    <!-- 이메일 중복 체크 -->
+    <select id="countByEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT COUNT(*) 
+        FROM t_bedu_user 
+        WHERE USER_ID = #{email}
+    </select>
+
+    <!-- 닉네임 중복 체크 -->
+    <select id="countByNickname" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT COUNT(*) 
+        FROM t_bedu_user 
+        WHERE USER_NAME = #{nickname}
+    </select>
+    
+    <!-- 이메일로 비밀번호 불러오기 -->
+	<select id="getPasswordByEmail" parameterType="java.lang.String" resultType="java.lang.String">
+	    SELECT USER_PW
+	    FROM t_bedu_user
+	    WHERE USER_ID = #{email}
+	</select>
+		
+	<!-- 이메일로 유저정보 불러오기 -->
+	<select id="getMemberByEmail" parameterType="java.lang.String" resultType="com.care.bedu.user.vo.MemberVO">
+	    SELECT
+	    	USER_NUM AS usernum,
+	    	USER_ID AS email, 
+	        USER_NAME AS nickname,
+	        REG_DATE AS regDate, 
+      		USER_CLS AS cls, 
+      		USER_REG_DATE AS urd, 
+      		USER_WITH_DRAW_YN AS udy
+	    FROM t_bedu_user
+	    WHERE USER_ID = #{email}
+	    AND USER_WITH_DRAW_YN = 'N'
+	</select>
+	
+	<!-- 이메일로 좋아요누른 자유게시판번호 불러오기 -->
+    <select id="getLikedBoardNumbersByEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT A.COMM_BD_NUM AS cbnum
+        FROM T_BEDU_LIKE_CNT A
+        INNER JOIN T_BEDU_USER B ON A.REG_ID = B.USER_ID
+        WHERE B.USER_ID = #{email}
+        AND NOT A.COMM_BD_NUM IS NULL
+    </select>
+    
+    <!-- 이메일로 좋아요누른 질문답변 게시판번호 불러오기 -->
+    <select id="getLikedQSBoardNumbersByEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT A.QS_BD_NUM AS qsbnum
+        FROM T_BEDU_LIKE_CNT A
+        INNER JOIN T_BEDU_USER B ON A.REG_ID = B.USER_ID
+        WHERE B.USER_ID = #{email}
+        AND NOT A.QS_BD_NUM IS NULL
+    </select>
+    
+    <!-- 구독정보 유무확인 -->
+	<select id="getSubInfo" resultType="java.lang.Integer">
+		SELECT COUNT(*) 
+		FROM
+			B_EDU.T_BEDU_SUB
+		WHERE
+			SUB_NM = #{nickname}
+	</select>
+	
+	<update id="passwordChange" parameterType="com.care.bedu.user.vo.MemberVO">
+		UPDATE t_bedu_user
+		SET USER_PW = #{password}
+		WHERE USER_ID = #{email}
+	</update>
+	
+	<update id="withDraw" parameterType="com.care.bedu.user.vo.MemberVO">
+		UPDATE t_bedu_user
+		SET USER_WITH_DRAW_YN = 'Y'
+		WHERE USER_ID = #{email}
+	</update>
+	
+</mapper>
